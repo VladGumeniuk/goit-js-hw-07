@@ -8,13 +8,15 @@ const ingredients = [
   'Зелень',
   'Приправы',
 ];
-const checkUl = document.querySelector("#ingredients");
-const fragment = document.createDocumentFragment();
+const listForAddingItems = document.querySelector(`#ingredients`);
 
-ingredients.forEach(elem => {
-  const createLi = document.createElement("li");
-  createLi.textContent = elem;
-  fragment.appendChild(createLi);
-});
+const addListItems = (array) => {
+    const listArray = array.map(elem => {
+        const createLi = document.createElement('li');
+        createLi.textContent = elem;
+        return createLi;
+    })
+    listForAddingItems.append(...listArray);
+}
 
-checkUl.appendChild(fragment);
+addListItems(ingredients);
